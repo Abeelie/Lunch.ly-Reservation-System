@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Customers{% endblock %}
+{% block content %}
+
+<a class="btn btn-primary" style="float: right" href="/add/">Add a Customer</a></p>
+
+<h1>Customers</h1>
+
+<!-- <ul style="column-count: 4">
+  {% for customer in customers %}
+  <li><a href="/{{ customer.id }}/">{{ customer.firstName }} {{ customer.lastName }}</a></li>
+  {% endfor %}
+</ul> -->
+
+   <form action="/search" method="POST">
+      <div class="row">
+      <div class="form-group col">
+        <label for="first-name">First Name: </label>
+        <input id="first-name" class="form-control" name="firstName">
+      </div>
+      <div class="form-group col">
+        <label for="last-name">Last Name:</label>
+        <input id="last-name" class="form-control" name="lastName">
+      </div>
+    <!--   <div class="col-auto"> -->
+        <button class="btn btn-lg btn-success" id="button1" type="submit">
+          Search
+        </button>
+   <!--  </div> -->
+  </div>
+</form>
+
+
+
+
+<ul style="column-count: 4">
+  {% if customers %}
+  <li>
+    <a href="/{{ customers.id }}/">
+      {{ customers.first_name }} 
+      {{ customers.last_name }}
+    </a>
+  </li>
+  {% endif %}
+</ul>
+
+{% endblock %}
